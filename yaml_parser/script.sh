@@ -5,4 +5,4 @@ if [ ! -f "$1" ]; then
   exit 1
 fi
 
-echo -e "Hello, I'm NAME from PLACE. My date of birth is DATE"
+echo -e "Hello, I'm NAME from PLACE. My date of birth is DATE. List of course COURSES"

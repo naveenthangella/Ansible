@@ -1,0 +1,6 @@
+name: Naveen
+place: Vancouver
+date: 1995-06-12
+courses:
+  - name: Ansible
+  - name: Terraform
