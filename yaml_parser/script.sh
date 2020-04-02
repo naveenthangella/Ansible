@@ -4,7 +4,7 @@ if [ ! -f "$1" ]; then
   echo "Given file does not exist"
   exit 1
 fi
-
+i=0
 COURSES_COUNT=$(cat sample.yml | yq . | jq '.courses[].name' | wc -l)
 NAME=$(cat sample.yml | yq . | jq .name)
 PLACE=$(cat sample.yml | yq . | jq .place)
