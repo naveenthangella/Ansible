@@ -14,7 +14,7 @@ COURSES=(`cat sample.yml | yq . | jq '.courses[].name'`)
 
 while [ $COURSES_COUNT -gt 0 ]; do
 
-  echo -e "Hello, Im $NAME from $PLACE. My date of birth is $DATE. ${COURSES[$i]} Im learning  "
+  echo -e "Hello, Im $NAME from $PLACE. My date of birth is $DATE. Im learning ${COURSES[$i]}  "
   COURSES_COUNT=$(($COURSES_COUNT-1))
 
   i=$(($i+1))
