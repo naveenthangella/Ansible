@@ -9,14 +9,13 @@ COURSES_COUNT=$(cat sample.yml | yq . | jq '.courses[].name' | wc -l)
 NAME=$(cat sample.yml | yq . | jq .name)
 PLACE=$(cat sample.yml | yq . | jq .place)
 DATE=$(cat sample.yml | yq . | jq .date)
-COURSES=$(cat sample.yml | yq . | jq '.courses[].name')
+COURSES=$('cat sample.yml | yq . | jq '.courses[].name'')
 
 while [ $COURSES_COUNT -gt 0 ]; do
 
-  echo -e "Hello, I'm $NAME from $PLACE. My date of birth is $DATE. I'm learning ${COURSES[$i]}"
+  echo -e "Hello, Im $NAME from $PLACE. My date of birth is $DATE. ${COURSES[$i]} Im learning  "
   COURSES_COUNT=$(($COURSES_COUNT-1))
-  # shellcheck disable=SC1072
-  # shellcheck disable=SC1072
+
   i=$(($i+1))
 
 done
