@@ -9,7 +9,8 @@ COURSES_COUNT=$(cat sample.yml | yq . | jq '.courses[].name' | wc -l)
 NAME=$(cat sample.yml | yq . | jq .name)
 PLACE=$(cat sample.yml | yq . | jq .place)
 DATE=$(cat sample.yml | yq . | jq .date)
-COURSES=$('cat sample.yml | yq . | jq '.courses[].name'')
+# shellcheck disable=SC2091
+COURSES=(`cat sample.yml | yq . | jq '.courses[].name'`)
 
 while [ $COURSES_COUNT -gt 0 ]; do
 
