@@ -9,6 +9,6 @@ COURSES_COUNT=$(cat sample.yml | yq . | jq '.courses[].name' | wc -l)
 
 while [ $COURSES_COUNT -gt 0 ]; do
 
-echo -e "Hello, I'm NAME from PLACE. My date of birth is DATE. List of course COURSES"
-
+  echo -e "Hello, I'm NAME from PLACE. My date of birth is DATE. List of course COURSES"
+  COURSES_COUNT=$(($COURSES_COUNT-1))
 done
