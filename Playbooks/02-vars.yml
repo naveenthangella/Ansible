@@ -1,4 +1,4 @@
-- name: Print a variable
+- name: Print a variable from play
   hosts: all
   vars:
     URL: play.google.com
@@ -6,3 +6,21 @@
     - name: print a variable
       debug:
         msg: "URL= {{URL}}"
+
+- name: Print a variable from task
+  hosts: all
+  tasks:
+    - name: print a variable
+      vars:
+        URL: play.google.com
+      debug:
+        msg: "URL= {{URL}}"
+
+- name: print a variable from a file
+  hosts: all
+  vars_files:
+    - varfile.yml
+  tasks:
+    - name: Print a value from vars file
+      debug:
+        msg: URL = {{URL}}
