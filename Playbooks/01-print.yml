@@ -1,0 +1,6 @@
+- name: Print Hello
+  hosts: all
+  tasks:
+    - name: Say Hello from Debug Module
+      debug:
+        msg: Hello
