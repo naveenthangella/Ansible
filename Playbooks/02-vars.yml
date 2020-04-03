@@ -12,7 +12,7 @@
   tasks:
     - name: print a variable
       vars:
-        URL: play.google.com
+        URL: task.google.com
       debug:
         msg: "URL= {{URL}}"
 
