@@ -29,7 +29,7 @@
   hosts: all
   vars_prompt:
     - name: URL
-      prompt: Enter the value-
+      prompt: Enter the value
   tasks:
     - name: Print a value from vars file
       debug:
