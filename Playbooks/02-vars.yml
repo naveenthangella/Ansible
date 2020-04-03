@@ -30,8 +30,15 @@
   vars_prompt:
     - name: URL
       prompt: Enter the URL
-      private: yes
+      private: no
   tasks:
     - name: Print a value from vars file
       debug:
         msg: URL = {{URL}}
+
+- name: print a variable from a Inventory file
+  hosts: all
+  tasks:
+    - name: Print a value from Invetory file
+      debug:
+        msg: URL = {{URL_HOST}}
