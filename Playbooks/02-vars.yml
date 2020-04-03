@@ -24,3 +24,13 @@
     - name: Print a value from vars file
       debug:
         msg: URL = {{URL}}
+
+- name: take input from the user prompt and display
+  hosts: all
+  vars_prompt:
+    - name: URL
+      prompt: Enter the value-
+  tasks:
+    - name: Print a value from vars file
+      debug:
+        msg: URL = {{URL}}
