@@ -12,7 +12,7 @@ resource "aws_instance" "node1" {
   }
 }
 
-resource "aws_instance" "node2" {
+/*resource "aws_instance" "node2" {
   ami = "ami-0777ff5c030fe1d38"
   instance_type = "t2.micro"
   key_name = "devops"
@@ -20,9 +20,10 @@ resource "aws_instance" "node2" {
   tags = {
     name = "Node2"
   }
-}
+} */
 
 resource "local_file" "inventory" {
   filename = "/tmp/hosts"
-  content = "${aws_instance.node1.public_ip }\n${aws_instance.node2.public_ip}"
+  //content = "${aws_instance.node1.public_ip }\n${aws_instance.node2.public_ip}"
+  content = "${aws_instance.node1.public_ip }"
 }
