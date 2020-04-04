@@ -1,0 +1,8 @@
+- name: Install & Configure web server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Nginx Web Server
+      package:
+        name: nginx
+        state: present
