@@ -1,0 +1,15 @@
+- name: Find the list of files in the directive
+  hosts: all
+  become: yes
+  tasks:
+    - name: find the files
+      find:
+        paths: /usr/share/nginx/html/
+        file_type: any
+      register: OUT
+
+    - name: delete the files
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{OUT.files}}"

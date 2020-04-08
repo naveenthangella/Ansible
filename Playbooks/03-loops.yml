@@ -1,0 +1,9 @@
+- name: Loop in ansible
+  hosts: all
+  tasks:
+    - name: Print multiple values
+      debug:
+        msg: "Fruit Name = {{item}}"
+      loop:
+        - apple
+        - banana
