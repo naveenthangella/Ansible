@@ -2,13 +2,13 @@
   hosts: all
   become: yes
   tasks:
-    - name: find the files
+    - name: find all the nginx files
       find:
         paths: /usr/share/nginx/html/
         file_type: any
       register: OUT
 
-    - name: delete the files
+    - name: delete the files in html directory
       file:
         path: "{{item.path}}"
         state: absent
