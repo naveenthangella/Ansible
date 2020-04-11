@@ -8,7 +8,7 @@ resource "aws_instance" "node1" {
   key_name = "devops"
   vpc_security_group_ids = ["sg-0183b01f41709052a"]
   tags = {
-    name = "Node1"
+    Name = "Node1"
   }
 }
 
