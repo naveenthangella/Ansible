@@ -6,3 +6,21 @@
       package:
         name: nginx
         state: present
+
+    - name: find all the nginx files
+      find:
+        paths: /usr/share/nginx/html/
+        file_type: any
+      register: OUT
+
+    - name: delete the files in html directory
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{OUT.files}}"
+
+    -name: download the file and copy into html directory
+     unarchive:
+       src: https://studentapi-cit.s3-us-west-2.amazonaws.com/studentapp-frontend.tar.gz
+       dest: /usr/share/nginx/html
+       remote_src: yes
