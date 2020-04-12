@@ -1,19 +1,19 @@
 - name: Install Nginx Web Server
-    package:
-      name: nginx
-      state: present
+  package:
+    name: nginx
+    state: present
 
 - name: find all the nginx files
-    find:
-      paths: /usr/share/nginx/html/
-      file_type: any
+  find:
+    paths: /usr/share/nginx/html/
+    file_type: any
     register: OUT
 
 - name: delete the files in html directory
-    file:
-      path: "{{item.path}}"
-      state: absent
-    loop: "{{OUT.files}}"
+  file:
+    path: "{{item.path}}"
+    state: absent
+  loop: "{{OUT.files}}"
 
 - name: download the file and copy into html directory
   unarchive:
@@ -21,7 +21,7 @@
     dest: /usr/share/nginx/html
     remote_src: yes
 - name: Starting nginx service
-    service:
-      name: nginx
-      state: restarted
-      enabled: yes
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
