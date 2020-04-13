@@ -13,3 +13,36 @@
     dest: "/home/{{APPUSER}}"
     remote_src: yes
   become_user: "{{APPUSER}}"
+
+- name: dowload student war file
+  get_url:
+    url: "{{WAR_URL}}"
+    dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/webapps"
+  become_user: "{{APPUSER}}"
+
+- name: dowload JDBC jar file
+  get_url:
+    url: "{{JDBC_URL}}"
+    dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/lib"
+  become_user: "{{APPUSER}}"
+
+- name: edit the context.xml file to specify the DataBase details using template
+  template:
+    src: context.xml.j2
+    dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/context.xml"
+  become_user: "{{APPUSER}}"
+
+- name: download tomcat init script to configure systemctl
+  get_url:
+    url: "{{TOMCAT_INIT_SCRIPT_URL}}"
+    dest: "/etc/init.d/tomcat"
+    mode: u=rwx,g=rx,o=rx
+
+- name: Reload systemctl services
+  systemd:
+    daemon_reload: yes
+
+- name: start tomcat
+  service:
+    name: tomcat
+    state: restarted
