@@ -1,0 +1,14 @@
+- name: template module sample
+  hosts: all
+  vars:
+    TOMCAT_HOST: localhost
+  tasks:
+    - name: copy a file
+      template:
+        src: nginx.conf.j2
+        dest: /tmp/nginx.conf
+        vars:
+          locations:
+            - student
+            - demo1
+            - demo2
