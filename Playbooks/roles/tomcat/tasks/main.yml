@@ -14,13 +14,13 @@
     remote_src: yes
   become_user: "{{APPUSER}}"
 
-- name: dowload student war file
+- name: download student war file
   get_url:
     url: "{{WAR_URL}}"
     dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/webapps"
   become_user: "{{APPUSER}}"
 
-- name: dowload JDBC jar file
+- name: download JDBC jar file
   get_url:
     url: "{{JDBC_URL}}"
     dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/lib"
