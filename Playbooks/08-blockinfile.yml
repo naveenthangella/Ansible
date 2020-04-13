@@ -1,0 +1,12 @@
+- name: sample block in file
+  hosts: all
+  tasks:
+    - name: upadate a file using block in file
+      blockinfile:
+        path: /tmp/nginx.conf
+        insertbefore: "^        error_page 404 /404.html;"
+        marker: "\t# {mark} ANSIBLE MANAGED BLOCK "
+        block: |2
+              locaton /student{
+                proxy_pass http://localhost:8080/student;
+              }
