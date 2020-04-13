@@ -14,11 +14,11 @@
     url: "{{DBURL}}"
     dest: "/tmp/studentapp.sql"
 
-#- name: Restore database
-#  mysql_db:
-#    name: studentapp
-#    state: import
-#    target: /tmp/studentapp.sql
+- name: Restore database
+  mysql_db:
+    name: studentapp
+    state: import
+    target: /tmp/studentapp.sql
 
 #- name: Load Schema
 # shell: mysql </tmp/studentapp.sql
