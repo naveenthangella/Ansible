@@ -26,5 +26,5 @@ resource "aws_instance" "node1" {
 resource "local_file" "inventory" {
   filename = "/tmp/hosts"
   //content = "${aws_instance.node1.public_ip }\n${aws_instance.node2.public_ip}"
-  content = "aws_instance.node1.public_ip"
+  content = aws_instance.node1.public_ip
 }
