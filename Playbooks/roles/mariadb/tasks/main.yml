@@ -1,0 +1,24 @@
+- name: install mariadb server
+  package:
+    name: mariadb-server
+    state: present
+
+- name: start mariadb
+  systemd:
+    name: mariadb
+    enabled: yes
+    state: started
+
+- name: download the sql file (database schema)
+  get_url:
+    url: "{{DBURL}}"
+    dest: "/tmp/studentapp.sql"
+
+#- name: Restore database
+#  mysql_db:
+#    name: my_db
+#    state: import
+#    target: /tmp/dump.sql.bz2
+
+- name: Load Schema
+  shell: mysql < /tmp/student.sql

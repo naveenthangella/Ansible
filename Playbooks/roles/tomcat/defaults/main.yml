@@ -1,4 +1,4 @@
-DBUSER: dummy
-DBPASS: dummy
-DBHOST: dummy
-DBNAME: dummy
+DBUSER: student
+DBPASS: student1
+DBHOST: localhost
+DBNAME: studentapp
