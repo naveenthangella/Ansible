@@ -21,4 +21,4 @@
 #    target: /tmp/dump.sql.bz2
 
 - name: Load Schema
-  shell: mysql </tmp/student.sql
+  shell: mysql </tmp/studentapp.sql
