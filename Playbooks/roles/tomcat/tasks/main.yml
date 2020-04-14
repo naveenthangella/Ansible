@@ -2,7 +2,7 @@
   package:
     name: java
     state: latest
-
+  notify: restart tomcat
 - name: add user
   user:
     name: "{{APPUSER}}"
@@ -20,6 +20,7 @@
     remote_src: yes
   become_user: "{{APPUSER}}"
   when: tomcat_dir_check.failed == "false"
+  notify: restart tomcat
 
 - name: download student war file
   get_url:
@@ -32,12 +33,14 @@
     url: "{{JDBC_URL}}"
     dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/lib"
   become_user: "{{APPUSER}}"
+  notify: restart tomcat
 
 - name: edit the context.xml file to specify the DataBase details using template
   template:
     src: context.xml.j2
     dest: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/context.xml"
   become_user: "{{APPUSER}}"
+  notify: restart tomcat
 
 - name: download tomcat init script to configure systemctl
   get_url:
@@ -50,6 +53,6 @@
     daemon_reload: yes
 
 - name: start tomcat
-  service:
+  systemd:
     name: tomcat
-    state: restarted
+    state: started
