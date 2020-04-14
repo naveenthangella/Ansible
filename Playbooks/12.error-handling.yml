@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: Failed task
-      shell: "true"
+      shell: "false"
       ignore_errors: yes
 
     - name: Print OK
