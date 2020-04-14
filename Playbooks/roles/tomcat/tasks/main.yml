@@ -7,12 +7,19 @@
   user:
     name: "{{APPUSER}}"
 
+- name: check for tomcat directory
+  stat:
+    path: "/home/{{APPUSER}}/apache-tomcat-{{TOMCAT_VERSION}}"
+  register: tomcat_dir_check
+
+
 - name: download tomcat
   unarchive:
     src: "{{TOMCAT_URL}}"
     dest: "/home/{{APPUSER}}"
     remote_src: yes
   become_user: "{{APPUSER}}"
+  when: tomcat_dir_check.failed == "false"
 
 - name: download student war file
   get_url:
