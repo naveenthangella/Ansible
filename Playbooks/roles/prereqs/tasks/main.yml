@@ -1,5 +1,5 @@
 - name: memory check
   fail:
-    msg: "memory required to install {{role_names | list}} is {{MIN_MEMORY}}, but it only has {{ansible_memtotal_mb}}"
+    msg: "memory required to install {{role_names | last}} is {{MIN_MEMORY}}, but it only has {{ansible_memtotal_mb}}"
   when: ansible_memtotal_mb <= MIN_MEMORY
 
