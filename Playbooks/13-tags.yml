@@ -1,0 +1,13 @@
+- name: sample tags
+  hosts: all
+  tasks:
+    - name: print tag1
+      debug:
+        msg: "hello from tag 1"
+      tags:
+        - tag1
+    - name: print tag2
+      debug:
+        msg: "hello from tag2"
+      tags:
+        - tag2
