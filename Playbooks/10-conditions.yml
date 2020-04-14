@@ -1,0 +1,6 @@
+- name: sample conditions
+  hosts: all
+  tasks:
+    - name: print the operating system
+      debug:
+        msg: {{ansible_distribution}}
