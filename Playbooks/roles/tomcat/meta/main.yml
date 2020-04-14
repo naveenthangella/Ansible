@@ -2,4 +2,4 @@
 dependencies:
   - role: prereqs
     vars:
-      MIN_MEMORY: 1000
+      MIN_MEMORY: 500
