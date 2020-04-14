@@ -3,4 +3,5 @@
   tasks:
     - name: print the operating system
       debug:
-        msg: "{{ansible_distribution}}"
+        msg: "Hello from {{ansible_distribution}}"
+      when: ansible_distribution == "CentOS"
