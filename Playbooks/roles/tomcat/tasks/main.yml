@@ -19,7 +19,7 @@
     dest: "/home/{{APPUSER}}"
     remote_src: yes
   become_user: "{{APPUSER}}"
-  when: tomcat_dir_check.failed == "false"
+  when: tomcat_dir_check.stat.exists == false
   notify: restart tomcat
 
 - name: download student war file
