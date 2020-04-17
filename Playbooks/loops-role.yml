@@ -7,7 +7,7 @@
   tasks:
     - name: roles
       file:
-        dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
+        dest: "/home/centos/tomcat/tomcat-{{ item }}"
         state: directory
       include_role:
         name: download_tomcat
