@@ -21,6 +21,7 @@
         path: "{{item.path}}"
         state: absent
       loop: "{{OUT.files}}"
+      become: yes
 
     - name: download tomcat role
       include_role:
