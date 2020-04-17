@@ -13,7 +13,7 @@
 #      debug:
 #        msg: "tomcat-{{item}}"
       file:
-        dest: "/home/tomcat/tomcat-{{ item }}"
+        dest: "/home/centos/tomcat/tomcat-{{ item }}"
         state: directory
       with_sequence: end={{number}} start=1
 
