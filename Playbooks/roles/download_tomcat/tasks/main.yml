@@ -16,6 +16,21 @@
     dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/server.xml"
   become_user: "{{APPUSER}}"
 
+- name: download tomcat init script to configure systemctl
+  template:
+    src: tomcat-init.j2
+    dest: "/etc/init.d/tomcat"
+    mode: u=rwx,g=rx,o=rx
+  become: yes
+
+- name: Reload systemctl services
+  systemd:
+    daemon_reload: yes
+
+- name: start tomcat
+  systemd:
+    name: tomcat
+    state: started
 #- name: start tomcat{{item}}
 #  shell:
 #    cmd: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/bin/startup.sh

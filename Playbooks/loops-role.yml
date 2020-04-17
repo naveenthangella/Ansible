@@ -30,18 +30,4 @@
         item1: "{{item}}"
       with_sequence: end={{number}} start=1
 
-    - name: download tomcat init script to configure systemctl
-      get_url:
-        url: "https://s3-us-west-2.amazonaws.com/studentapi-cit/tomcat-init"
-        dest: "/etc/init.d/tomcat"
-        mode: u=rwx,g=rx,o=rx
-      become: yes
 
-    - name: Reload systemctl services
-      systemd:
-        daemon_reload: yes
-
-    - name: start tomcat
-      systemd:
-        name: tomcat
-        state: started
