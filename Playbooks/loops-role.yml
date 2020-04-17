@@ -5,6 +5,11 @@
       prompt: Enter the number of times to iterate the loop
       private: no
   tasks:
+    - name: install java
+      package:
+        name: java
+        state: latest
+
     - name: find all the tomcat directories
       find:
         paths: /home/centos/
