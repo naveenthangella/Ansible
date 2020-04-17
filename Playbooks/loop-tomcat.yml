@@ -10,8 +10,8 @@
         msg: "{{number}}"
 
     - name: loop
-      debug:
-        msg: "tomcat-{{item}}"
+#      debug:
+#        msg: "tomcat-{{item}}"
       file:
         dest: "/home/tomcat/tomcat-{{ item }}"
         state: directory
