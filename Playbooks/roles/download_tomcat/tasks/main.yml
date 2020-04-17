@@ -1,3 +1,10 @@
+- name: files
+  file:
+    dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
+    state: directory
+
+
+
 - name: loop
   #debug:
   # msg: "tomcat-{{item1}}"
@@ -9,4 +16,3 @@
     src: "{{TOMCAT_URL}}"
     remote_src: yes
   become_user: "{{APPUSER}}"
-
