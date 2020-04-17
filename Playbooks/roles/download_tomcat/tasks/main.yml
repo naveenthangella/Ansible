@@ -26,11 +26,12 @@
 - name: Reload systemctl services
   systemd:
     daemon_reload: yes
-
+  become: yes
 - name: start tomcat
   systemd:
     name: tomcat
     state: started
+  become: yes
 #- name: start tomcat{{item}}
 #  shell:
 #    cmd: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/bin/startup.sh
