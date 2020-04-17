@@ -1,12 +1,11 @@
 - name: loop to create n directories
   hosts: all
-#  vars_prompt:
- #   - name: number
-  #    prompt: Enter the number of times to iterate the loop
-   #   private: no
-
+  vars_prompt:
+    - name: number
+      prompt: Enter the number of times to iterate the loop
+      private: no
   tasks:
-    - file:
-        dest: "/home/tomcat/tomcat-{{item}}
-        state: directory
-      with_sequence: start=1 end=10
+    -name: print the number
+      debug:
+        msg: "{{number}}"
+
