@@ -1,0 +1,9 @@
+- name: Install & Configure web server
+  hosts: all
+  vars_prompt:
+    - name: number
+      prompt: Enter the number of times to iterate the loop
+      private: no
+  roles:
+    - download_tomcat
+  with_sequence: end={{number}} start=1

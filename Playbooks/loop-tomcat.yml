@@ -1,20 +1,26 @@
 - name: loop to create n directories
   hosts: all
+  vars:
+    TOMCAT_VERSION: 8.5.50
   vars_prompt:
     - name: number
       prompt: Enter the number of times to iterate the loop
       private: no
   tasks:
-    - name: print the number
-      debug:
-        msg: "{{number}}"
+#    - name: print the number
+#      debug:
+#        msg: "{{number}}"
 
-    - name: loop
+#    - name: loop
 #      debug:
 #        msg: "tomcat-{{item}}"
-      file:
+#      file:
+#        dest: "/home/centos/tomcat/tomcat-{{ item }}"
+#        state: directory
+#      with_sequence: end={{number}} start=1
+
+    - name: download tomcat {{number}} times
+      unarchive:
+        src: "https://archive.apache.org/dist/tomcat/tomcat-8/v{{TOMCAT_VERSION}}/bin/apache-tomcat-{{TOMCAT_VERSION}}.tar.gz"
         dest: "/home/centos/tomcat/tomcat-{{ item }}"
-        state: directory
-      with_sequence: end={{number}} start=1
-
-
+        remote_src: yes
