@@ -9,7 +9,7 @@
       package:
         name: java
         state: latest
-
+      become: yes
     - name: find all the tomcat directories
       find:
         paths: /home/centos/
