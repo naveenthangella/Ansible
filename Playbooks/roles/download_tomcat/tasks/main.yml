@@ -17,4 +17,4 @@
   become_user: "{{APPUSER}}"
 
 - name: start tomcat{{item}}
-  shell: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/apache-tomcat-8.5.50/bin/startup.sh
+  shell:  /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/apache-tomcat-8.5.50/bin/startup.sh
