@@ -11,7 +11,7 @@
 
     - name: loop
       debug:
-        msg: "{{number}}-{{item}}"
+        msg: "tomcat-{{item}}"
       with_sequence: end={{number}} start=1
 
 
