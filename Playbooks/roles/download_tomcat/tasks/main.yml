@@ -1,6 +1,6 @@
 - name: loop
-  debug:
-    msg: "tomcat-{{item1}}"
+  #debug:
+  # msg: "tomcat-{{item1}}"
   file:
     dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
     state: directory
