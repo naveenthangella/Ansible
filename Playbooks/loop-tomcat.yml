@@ -12,6 +12,9 @@
     - name: loop
       debug:
         msg: "tomcat-{{item}}"
+      file:
+        dest: "/home/tomcat/tomcat-{{ item }}"
+        state: directory
       with_sequence: end={{number}} start=1
 
 
