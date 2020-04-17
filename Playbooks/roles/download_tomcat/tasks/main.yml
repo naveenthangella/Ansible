@@ -16,6 +16,6 @@
     dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/server.xml"
   become_user: "{{APPUSER}}"
 
-- name: start tomcat{{item}}
-  shell:
-    cmd: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/bin/startup.sh
+#- name: start tomcat{{item}}
+#  shell:
+#    cmd: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/bin/startup.sh
