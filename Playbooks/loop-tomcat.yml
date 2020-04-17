@@ -9,4 +9,4 @@
     - file:
         dest: "/home/tomcat/tomcat-{{item}}
         state: directory
-      with_sequence: start=1 end= "{{number}}"
+      with_sequence: start=1 end= {{ number }}
