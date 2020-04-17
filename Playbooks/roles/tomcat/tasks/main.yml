@@ -51,6 +51,7 @@
 - name: Reload systemctl services
   systemd:
     daemon_reload: yes
+  become: yes
 
 - name: start tomcat
   systemd:
