@@ -1,9 +1,9 @@
 - name: loop to create n directories
   hosts: all
-  vars_prompt:
-    - name: number
-      prompt: Enter the number of times to iterate the loop
-      private: no
+#  vars_prompt:
+ #   - name: number
+  #    prompt: Enter the number of times to iterate the loop
+   #   private: no
 
   tasks:
     - file:
