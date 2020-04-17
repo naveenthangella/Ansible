@@ -8,3 +8,10 @@
     - name: print the number
       debug:
         msg: "{{number}}"
+
+    - name: loop
+      debug:
+        msg: "{{item}}"
+      with_sequence: end=0 start=10
+
+
