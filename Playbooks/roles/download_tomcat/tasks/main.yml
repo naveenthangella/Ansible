@@ -1,11 +1,11 @@
-- name: files
+- name: create tomcat-{{ item }}
   file:
-    dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
+    dest: "/home/centos/tomcat/tomcat-{{ item }}"
     state: directory
 
-- name: download tomcat in tomcat-{{item1}}
+- name: download tomcat in tomcat-{{item}}
   unarchive:
-    dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item1}}"
+    dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}"
     src: "{{TOMCAT_URL}}"
     remote_src: yes
   become_user: "{{APPUSER}}"

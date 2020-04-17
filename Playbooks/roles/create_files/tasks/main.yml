@@ -1,4 +1,0 @@
-- name:
-  file:
-    dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
-    state: directory

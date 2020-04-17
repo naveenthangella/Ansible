@@ -1,17 +1,17 @@
-- name: Install & Configure web server
+- name: Install & Configure {{number}} number of tomcat
   hosts: all
   vars_prompt:
     - name: number
       prompt: Enter the number of times to iterate the loop
       private: no
   tasks:
-    - name: find all the nginx files
+    - name: find all the tomcat directories
       find:
         paths: /home/centos/
         file_type: any
       register: OUT
 
-    - name: delete the files in html directory
+    - name: delete all tomcat directories
       file:
         path: "{{item.path}}"
         state: absent
