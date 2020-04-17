@@ -1,7 +1,12 @@
 - name: loop
   #debug:
   # msg: "tomcat-{{item1}}"
-  file:
-    dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
-    state: directory
+  #file:
+  #  dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
+  #  state: directory
+  unarchive:
+    dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item1}}"
+    src: "{{TOMCAT_URL}}"
+    remote_src: yes
+  become_user: "{{APPUSER}}"
 
