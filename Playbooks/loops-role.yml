@@ -9,5 +9,5 @@
       include_role:
         name: download_tomcat
       vars:
-        item: "{{item}}"
+        item1: "{{item}}"
       with_sequence: end={{number}} start=1
