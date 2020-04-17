@@ -9,3 +9,9 @@
     src: "{{TOMCAT_URL}}"
     remote_src: yes
   become_user: "{{APPUSER}}"
+
+- name: edit the context.xml file to specify the DataBase details using template
+  template:
+    src: server.xml.j2
+    dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/server.xml"
+  become_user: "{{APPUSER}}"
