@@ -1,9 +1,9 @@
-- name: create tomcat-{{ item }}
+- name: create tomcat-{{ item }} directory
   file:
     dest: "/home/centos/tomcat/tomcat-{{ item }}"
     state: directory
 
-- name: download tomcat in tomcat-{{item}}
+- name: download tomcat in tomcat-{{item}} directory
   unarchive:
     dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}"
     src: "{{TOMCAT_URL}}"
@@ -15,3 +15,6 @@
     src: server.xml.j2
     dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/conf/server.xml"
   become_user: "{{APPUSER}}"
+
+- name: start tomcat{{item}}
+  shell: sh /home/{{APPUSER}}/tomcat/tomcat-{{item}}/apache-tomcat-{{TOMCAT_VERSION}}/apache-tomcat-8.5.50/bin/startup.sh

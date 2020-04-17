@@ -1,8 +1,8 @@
-- name: Install & Configure {{number}} number of tomcat
+- name: Install & Configure {{number}} tomcat servers
   hosts: all
   vars_prompt:
     - name: number
-      prompt: Enter the number of times to iterate the loop
+      prompt: Enter the number of tomcat-servers
       private: no
   tasks:
     - name: install java
@@ -22,7 +22,7 @@
         state: absent
       loop: "{{OUT.files}}"
 
-    - name: roles
+    - name: download tomcat role
       include_role:
         name: download_tomcat
       vars:
