@@ -12,6 +12,6 @@
     - name: loop
       debug:
         msg: "{{number}}-{{item}}"
-      with_sequence: end=10 start=1
+      with_sequence: end={{number}} start=1
 
 
