@@ -6,11 +6,12 @@
       private: no
   tasks:
     - name: roles
-      file:
-        dest: "/home/centos/tomcat/tomcat-{{ item }}"
-        state: directory
       include_role:
         name: download_tomcat
       vars:
         item1: "{{item}}"
       with_sequence: end={{number}} start=1
+    - name: files
+      file:
+        dest: "/home/centos/tomcat/tomcat-{{ item }}"
+        state: directory
