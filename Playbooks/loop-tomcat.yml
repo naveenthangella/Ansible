@@ -5,7 +5,6 @@
       prompt: Enter the number of times to iterate the loop
       private: no
   tasks:
-    -name: print the number
+    - name: print the number
       debug:
         msg: "{{number}}"
-
