@@ -4,9 +4,10 @@
     - name: number
       prompt: Enter the number of times to iterate the loop
       private: no
-  - name: roles
-    include_role:
-      name: download_tomcat
-    vars:
-      item: "{{item}}"
-    with_sequence: end={{number}} start=1
+  tasks:
+    - name: roles
+      include_role:
+        name: download_tomcat
+      vars:
+        item: "{{item}}"
+      with_sequence: end={{number}} start=1
