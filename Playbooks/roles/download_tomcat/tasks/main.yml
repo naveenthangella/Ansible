@@ -3,14 +3,7 @@
     dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
     state: directory
 
-
-
-- name: loop
-  #debug:
-  # msg: "tomcat-{{item1}}"
-  #file:
-  #  dest: "/home/centos/tomcat/tomcat-{{ item1 }}"
-  #  state: directory
+- name: download tomcat in tomcat-{{item1}}
   unarchive:
     dest: "/home/{{APPUSER}}/tomcat/tomcat-{{item1}}"
     src: "{{TOMCAT_URL}}"

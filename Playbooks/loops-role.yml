@@ -5,6 +5,18 @@
       prompt: Enter the number of times to iterate the loop
       private: no
   tasks:
+    - name: find all the nginx files
+      find:
+        paths: /home/centos/
+        file_type: any
+      register: OUT
+
+    - name: delete the files in html directory
+      file:
+        path: "{{item.path}}"
+        state: absent
+      loop: "{{OUT.files}}"
+
     - name: roles
       include_role:
         name: download_tomcat
