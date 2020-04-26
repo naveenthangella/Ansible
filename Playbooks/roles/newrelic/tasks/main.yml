@@ -1,0 +1,42 @@
+- name: Install JQ
+  package:
+    name: jq
+    state: installed
+
+- name: Upload license key
+  lineinfile:
+    path: /etc/newrelic-infra.yml
+    line: "license_key: {{LICENSE_KEY}}"
+    create: yes
+
+- name: Download centos repo
+  get_url:
+    url: https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo
+    dest: /etc/yum.repos.d/newrelic-infra.repo
+
+- name: Install new-relic agent
+  yum:
+    name: newrelic-infra
+    state: present
+
+- name: Copy templates
+  template:
+    src: "{{item}}.j2"
+    dest: "/tmp/{{item}}"
+  loop:
+    - nginx-proc-check.json
+    - tomcat-proc-check.json
+    - host-not-report.json
+
+- name: Copy alert make script
+  copy:
+    src: make-alert.sh
+    dest: /tmp/make-alert.sh
+    mode: 0755
+
+- name: Create Alert
+  shell: /tmp/make-alert.sh {{API_KEY}} {{item}}
+  loop:
+    - nginx-proc-check.json
+    - tomcat-proc-check.json
+    - host-not-report.json
