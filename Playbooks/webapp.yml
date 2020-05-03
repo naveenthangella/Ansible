@@ -5,4 +5,4 @@
     - nginx
     - tomcat
     - mariadb
-    - newrelic
+    #- newrelic
